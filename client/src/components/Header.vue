@@ -1,30 +1,33 @@
 <template>
   <v-toolbar fixed dark color="teal">
     <v-toolbar-title>
-      <v-btn flat
-        to="/">
-        <v-icon>audiotrack</v-icon>
-      </v-btn>
+      <v-icon dark>audiotrack</v-icon>
+      Tab Tracker
     </v-toolbar-title>
     <v-toolbar-items>
-      <v-btn flat
+      <v-btn
+        flat
+        class="ml-4"
         to="/songs">
         Browse
       </v-btn>
     </v-toolbar-items>
     <v-spacer></v-spacer>
     <v-toolbar-items>
-      <v-btn flat
+      <v-btn
+        flat
         v-if="!$store.state.isUserLoggedIn"
         to="/login">
         Login
       </v-btn>
-      <v-btn flat
+      <v-btn
+        flat
         v-if="!$store.state.isUserLoggedIn"
         to="/register">
         Sign Up
       </v-btn>
-      <v-btn flat
+      <v-btn
+        flat
         v-if="$store.state.isUserLoggedIn"
         @click="logout">
         Log Out
@@ -40,7 +43,7 @@ export default{
       this.$store.dispatch('setToken', null)
       this.$store.dispatch('setUser', null)
       this.$router.push({
-        name: 'root'
+        name: 'Songs'
       })
     }
   }
