@@ -2,7 +2,7 @@
   <v-app>
     <v-toolbar/>
     <main>
-      <v-content>
+      <v-content class="mt-4">
         <v-container fluid>
           <router-view/>
         </v-container>
@@ -30,5 +30,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.danger-alert{
+  color: red
 }
 </style>
