@@ -28,7 +28,6 @@ export default {
   position: relative;
   padding-bottom: 56.25%; /* 16:9 */
   padding-top: 25px;
-  height: 200px;
 }
 .videoWrapper iframe {
   position: absolute;

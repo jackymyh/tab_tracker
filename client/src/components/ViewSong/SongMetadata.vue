@@ -13,6 +13,18 @@
         </div>
       </v-flex>
 
+      <v-btn
+        dark
+        class="teal"
+        @click="navigateTo({
+          name: 'Song-edit',
+          params: {
+            songId: song.id
+          }
+        })">
+        Edit Song
+      </v-btn>
+
       <v-flex xs6>
         <img class="album-image" :src="song.albumImageUrl"/>
         <br>
@@ -32,6 +44,11 @@ export default {
   ],
   components: {
     Panel
+  },
+  methods: {
+    navigateTo (route) {
+      this.$router.push(route)
+    }
   }
 }
 </script>
@@ -49,7 +66,7 @@ export default {
   font-size: 20px;
 }
 .album-image {
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
 }
 </style>

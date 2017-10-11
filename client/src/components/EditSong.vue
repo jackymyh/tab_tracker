@@ -61,8 +61,8 @@
       <div class="danger-alert" v-html="error"/>
       <br>
       <v-btn dark class="teal"
-        @click="add">
-        Add Song
+        @click="edit">
+        Edit Song
       </v-btn>
     </v-flex>
   </v-layout>
@@ -92,7 +92,7 @@ export default {
     Panel
   },
   methods: {
-    async add () {
+    async edit () {
       this.error = null
       const allFieldsFilled = Object
         .keys(this.song)
@@ -101,15 +101,23 @@ export default {
         this.error = 'Please fill in all fields'
         return
       }
+      const songId = this.$store.state.route.params.songId
       try {
-        await SongsService.addSong(this.song)
+        await SongsService.editSong(this.song)
         this.$router.push({
-          name: 'Songs'
+          name: 'Song',
+          params: {
+            songId: songId
+          }
         })
       } catch (err) {
         console.log(err)
       }
     }
+  },
+  async mounted () {
+    const songId = this.$store.state.route.params.songId
+    this.song = (await SongsService.show(songId)).data
   }
 }
 </script>

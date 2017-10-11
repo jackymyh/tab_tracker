@@ -1,39 +1,45 @@
 <template>
-  <v-layout>
-    <v-flex xs4>
-      <song-metadata :song="song"/>
-    </v-flex>
+  <div>
+    <v-layout>
+      <v-flex xs5>
+        <song-metadata :song="song"/>
+      </v-flex>
 
-    <v-flex xs8 ml-3>
-      <you-tube :youtubeId="song.youtubeId"/>
-    </v-flex>
-  </v-layout>
+      <v-flex xs7 ml-3>
+        <you-tube :youtubeId="song.youtubeId"/>
+      </v-flex>
+    </v-layout>
 
-  <!-- <v-layout>
-    <v-flex xs8 class="ml-3">
-      <panel title="Tab">
-        <textarea
-          readonly
-          v-model="song.tab"/>
-      </panel>
-    </v-flex>
-  </v-layout> -->
+    <v-layout>
+      <v-flex xs5 mt-3>
+        <lyrics :lyrics="song.lyrics"/>
+      </v-flex>
+
+      <v-flex xs7 ml-3 mt-3>
+        <tab :tab="song.tab"/>
+      </v-flex>
+    </v-layout>
+  </div>
 </template>
 
 <script>
 import SongsService from '@/services/songsService'
 import SongMetadata from '@/components/ViewSong/SongMetadata'
 import YouTube from '@/components/ViewSong/YouTube'
+import Lyrics from '@/components/ViewSong/Lyrics'
+import Tab from '@/components/ViewSong/Tab'
 import Panel from '@/components/Panel'
 export default {
   components: {
     Panel,
     SongMetadata,
-    YouTube
+    YouTube,
+    Lyrics,
+    Tab
   },
   data () {
     return {
-      song: null
+      song: {}
     }
   },
   async mounted () {
@@ -44,14 +50,4 @@ export default {
 </script>
 
 <style scoped>
-textarea {
-  width: 100%;
-  height: 600px;
-  font-family: monospace;
-  padding: 40px;
-  border: none;
-  border-style: none;
-  border-color: transparent;
-  overflow: auto;
-}
 </style>
