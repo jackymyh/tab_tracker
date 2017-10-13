@@ -36,16 +36,7 @@ export default {
         sortBy: 'createdAt',
         descending: true
       },
-      bookmarks: [
-        {
-          title: 'hello',
-          artist: 'test'
-        },
-        {
-          title: 'hello2',
-          artist: 'test2'
-        }
-      ]
+      bookmarks: []
     }
   },
   computed: {
@@ -57,9 +48,7 @@ export default {
   async mounted () {
     if (this.isUserLoggedIn) {
       try {
-        this.bookmarks = (await BookmarksService.index({
-          userId: this.user.id
-        })).data
+        this.bookmarks = (await BookmarksService.index()).data
       } catch (err) {
         console.log(err)
       }

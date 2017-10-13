@@ -1,21 +1,21 @@
 <template>
   <div>
     <v-layout>
-      <v-flex xs6>
+      <v-flex xs6 ma-2>
         <song-metadata :song="song"/>
       </v-flex>
 
-      <v-flex xs6 ml-3>
+      <v-flex xs6 ma-2>
         <you-tube :youtubeId="song.youtubeId"/>
       </v-flex>
     </v-layout>
 
     <v-layout>
-      <v-flex xs6 mt-3>
+      <v-flex xs6 ma-2>
         <lyrics :lyrics="song.lyrics"/>
       </v-flex>
 
-      <v-flex xs6 ml-3 mt-3>
+      <v-flex xs6 ma-2>
         <tab :tab="song.tab"/>
       </v-flex>
     </v-layout>
@@ -53,10 +53,11 @@ export default {
     const songId = this.route.params.songId
     this.song = (await SongsService.show(songId)).data
 
-    SongHistoryService.add({
-      userId: this.user.id,
-      songId: songId
-    })
+    if (this.isUserLoggedIn) {
+      SongHistoryService.add({
+        songId: songId
+      })
+    }
   }
 }
 </script>

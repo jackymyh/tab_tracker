@@ -1,5 +1,5 @@
 <template>
-  <v-layout>
+  <v-layout ma-2>
     <v-flex xs4>
       <panel title="Song Metadata">
         <v-text-field

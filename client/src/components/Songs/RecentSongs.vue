@@ -33,7 +33,7 @@ export default {
         }
       ],
       pagination: {
-        sortBy: 'createdAt',
+        sortBy: 'updatedAt',
         descending: true
       },
       songs: []
@@ -48,9 +48,7 @@ export default {
   async mounted () {
     if (this.isUserLoggedIn) {
       try {
-        this.songs = (await SongHistoryService.index({
-          userId: this.user.id
-        })).data
+        this.songs = (await SongHistoryService.index()).data
       } catch (err) {
         console.log(err)
       }
